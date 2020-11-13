@@ -1,0 +1,77 @@
+---
+title: "R Notebook"
+output: html_notebook
+author: Andrea Ouyang
+---
+
+```{r}
+setwd("~/Desktop/bioinfo")
+df_prot_filt <- read.csv("~/Desktop/bioinfo/df_prot_filt.csv", row.names=1)
+filtered_genes_list <- read.table("~/Desktop/bioinfo/filtered_genes_list.txt", quote="\"", comment.char="")
+filt <- as.character(filtered_genes_list[,1])
+rank <- read.delim("~/Desktop/bioinfo/IC_001.rnk", header=FALSE)
+```
+
+GO analysis
+```{r}
+library(ensembldb)
+library(org.Hs.eg.db)
+library(GOstats)
+library(GO.db)
+library(Category)
+keytypes(org.Hs.eg.db)
+keys <- keys(org.Hs.eg.db, keytype="ALIAS")
+selected <- select(org.Hs.eg.db, filt, c("ALIAS","ENTREZID"), "ALIAS")
+uni_selected <- select(org.Hs.eg.db, as.character(rank[,1]), c("ALIAS","ENTREZID"), "ALIAS")
+
+#universe is from ranked list
+#selected should be from filt list
+
+params_over = new("GOHyperGParams", 
+           geneIds=selected$ENTREZID, 
+           universeGeneIds=uni_selected$ENTREZID,
+           annotation="org.Hs.eg.db", 
+           ontology="BP", 
+           pvalueCutoff=0.05, 
+           conditional=TRUE, 
+           testDirection="over")
+
+params_under = new("GOHyperGParams", 
+           geneIds=selected$ENTREZID, 
+           universeGeneIds=uni_selected$ENTREZID,
+           annotation="org.Hs.eg.db", 
+           ontology="BP", 
+           pvalueCutoff=0.05, 
+           conditional=TRUE, 
+           testDirection="under")
+
+overRep <- hyperGTest(params_over)
+over <- summary(overRep)
+
+
+underRep <- hyperGTest(params_under)
+under <- summary(underRep)
+library("xlsx")
+# Write the first data set in a new workbook
+write.csv(over, file = "over.csv")
+write.csv(under, file = "under.csv")
+```
+
+Silhouette plot
+```{r}
+library(cluster)
+counts.filt.cor <- cor(t(df_prot_filt))  #144x144
+#some weird NA rows - will remove
+counts.filt.cor = counts.filt.cor[-c(128:136),-c(128:136)]
+counts.filt.dist <- as.dist(1-counts.filt.cor) #converted to distances
+counts.filt.hclust <- hclust(counts.filt.dist, method="average")
+counts.filt.groups <- cutree(counts.filt.hclust, k=2)
+counts.sil = silhouette(counts.filt.groups, dist=counts.filt.dist)
+plot(counts.sil, border=NA, main = "ICA Silhouette") #sil width is 0.4 - not great
+
+boxplot(df_prot_filt[names(which(counts.filt.groups == 1)),], ylim = c(-5,8), main = "ICA Down") #goes down
+boxplot(df_prot_filt[names(which(counts.filt.groups ==2)),], ylim = c(-5,8), main = "ICA Up") #goes up
+
+```
+
+

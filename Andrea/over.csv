@@ -1,0 +1,115 @@
+,GOBPID,Pvalue,OddsRatio,ExpCount,Count,Size,Term
+1,GO:0042572,0.000858098,19.31318681,0.193263158,3,17,retinol metabolic process
+2,GO:1903317,0.001293126,6.850942655,0.818526316,5,72,regulation of protein maturation
+3,GO:0006959,0.001298847,5.499405941,1.216421053,6,107,humoral immune response
+4,GO:0007189,0.001403652,15.89819005,0.227368421,3,20,adenylate cyclase-activating G protein-coupled receptor signaling pathway
+5,GO:0006910,0.004363788,25.45027125,0.102315789,2,9,"phagocytosis, recognition"
+6,GO:0030277,0.004363788,25.45027125,0.102315789,2,9,maintenance of gastrointestinal epithelium
+7,GO:0002700,0.004665011,6.482374768,0.682105263,4,60,regulation of production of molecular mediator of immune response
+8,GO:0006958,0.005059146,9.637362637,0.352421053,3,31,"complement activation, classical pathway"
+9,GO:0050871,0.006041597,8.992307692,0.375157895,3,33,positive regulation of B cell activation
+10,GO:0072376,0.006550099,5.850020947,0.750315789,4,66,protein activation cascade
+11,GO:0016064,0.007658152,5.577622378,0.784421053,4,69,immunoglobulin mediated immune response
+12,GO:0007187,0.007715842,8.171328671,0.409263158,3,36,"G protein-coupled receptor signaling pathway, coupled to cyclic nucleotide second messenger"
+13,GO:0007586,0.008328731,7.929864253,0.420631579,3,37,digestion
+14,GO:0000184,0.008401285,4.306107249,1.261894737,5,111,"nuclear-transcribed mRNA catabolic process, nonsense-mediated decay"
+15,GO:0030198,0.008911611,3.237027027,2.353263158,7,207,extracellular matrix organization
+16,GO:0006413,0.01003782,3.532307692,1.841684211,6,162,translational initiation
+17,GO:0030449,0.010335781,7.283783784,0.454736842,3,40,regulation of complement activation
+18,GO:0001971,0.011368421,Inf,0.011368421,1,1,negative regulation of activation of membrane attack complex
+19,GO:0002249,0.011368421,Inf,0.011368421,1,1,lymphocyte anergy
+20,GO:0002642,0.011368421,Inf,0.011368421,1,1,positive regulation of immunoglobulin biosynthetic process
+21,GO:0002667,0.011368421,Inf,0.011368421,1,1,regulation of T cell anergy
+22,GO:0010482,0.011368421,Inf,0.011368421,1,1,regulation of epidermal cell division
+23,GO:0010585,0.011368421,Inf,0.011368421,1,1,glutamine secretion
+24,GO:0015724,0.011368421,Inf,0.011368421,1,1,formate transport
+25,GO:0015797,0.011368421,Inf,0.011368421,1,1,mannitol transport
+26,GO:0035759,0.011368421,Inf,0.011368421,1,1,mesangial cell-matrix adhesion
+27,GO:0042774,0.011368421,Inf,0.011368421,1,1,plasma membrane ATP synthesis coupled electron transport
+28,GO:0048807,0.011368421,Inf,0.011368421,1,1,female genitalia morphogenesis
+29,GO:0051454,0.011368421,Inf,0.011368421,1,1,intracellular pH elevation
+30,GO:0060059,0.011368421,Inf,0.011368421,1,1,embryonic retina morphogenesis in camera-type eye
+31,GO:0061170,0.011368421,Inf,0.011368421,1,1,negative regulation of hair follicle placode formation
+32,GO:0071332,0.011368421,Inf,0.011368421,1,1,cellular response to fructose stimulus
+33,GO:0071657,0.011368421,Inf,0.011368421,1,1,positive regulation of granulocyte colony-stimulating factor production
+34,GO:0072254,0.011368421,Inf,0.011368421,1,1,metanephric glomerular mesangial cell differentiation
+35,GO:1900035,0.011368421,Inf,0.011368421,1,1,negative regulation of cellular response to heat
+36,GO:1900075,0.011368421,Inf,0.011368421,1,1,positive regulation of neuromuscular synaptic transmission
+37,GO:1900168,0.011368421,Inf,0.011368421,1,1,positive regulation of glial cell-derived neurotrophic factor secretion
+38,GO:1901740,0.011368421,Inf,0.011368421,1,1,negative regulation of myoblast fusion
+39,GO:1903803,0.011368421,Inf,0.011368421,1,1,L-glutamine import across plasma membrane
+40,GO:0010954,0.012177719,13.69230769,0.170526316,2,15,positive regulation of protein processing
+41,GO:0030166,0.012177719,13.69230769,0.170526316,2,15,proteoglycan biosynthetic process
+42,GO:0019935,0.012600304,6.734615385,0.488842105,3,43,cyclic-nucleotide-mediated signaling
+43,GO:0002449,0.012749848,3.861507583,1.398315789,5,123,lymphocyte mediated immunity
+44,GO:0016101,0.013413275,6.569418386,0.500210526,3,44,diterpenoid metabolic process
+45,GO:0002460,0.014485746,3.732743745,1.443789474,5,127,adaptive immune response based on somatic recombination of immune receptors built from immunoglobulin superfamily domains
+46,GO:0045661,0.015543278,11.86329114,0.193263158,2,17,regulation of myoblast differentiation
+47,GO:0006614,0.016917976,4.356751682,0.989052632,4,87,SRP-dependent cotranslational protein targeting to membrane
+48,GO:0140112,0.017358524,11.12025316,0.204631579,2,18,extracellular vesicle biogenesis
+49,GO:0007601,0.01792054,5.851170569,0.557052632,3,49,visual perception
+50,GO:0002639,0.020758715,10.00854701,0.224592925,2,20,positive regulation of immunoglobulin production
+51,GO:0002517,0.022609179,88.0375,0.022736842,1,2,T cell tolerance induction
+52,GO:0007567,0.022609179,88.0375,0.022736842,1,2,parturition
+53,GO:0015825,0.022609179,88.0375,0.022736842,1,2,L-serine transport
+54,GO:0021796,0.022609179,88.0375,0.022736842,1,2,cerebral cortex regionalization
+55,GO:0030321,0.022609179,88.0375,0.022736842,1,2,transepithelial chloride transport
+56,GO:0031990,0.022609179,88.0375,0.022736842,1,2,mRNA export from nucleus in response to heat stress
+57,GO:0034402,0.022609179,88.0375,0.022736842,1,2,recruitment of 3'-end processing factors to RNA polymerase II holoenzyme complex
+58,GO:0034633,0.022609179,88.0375,0.022736842,1,2,retinol transport
+59,GO:0042482,0.022609179,88.0375,0.022736842,1,2,positive regulation of odontogenesis
+60,GO:0045903,0.022609179,88.0375,0.022736842,1,2,positive regulation of translational fidelity
+61,GO:0046724,0.022609179,88.0375,0.022736842,1,2,oxalic acid secretion
+62,GO:0046864,0.022609179,88.0375,0.022736842,1,2,isoprenoid transport
+63,GO:0048295,0.022609179,88.0375,0.022736842,1,2,positive regulation of isotype switching to IgE isotypes
+64,GO:0060157,0.022609179,88.0375,0.022736842,1,2,urinary bladder development
+65,GO:0071846,0.022609179,88.0375,0.022736842,1,2,actin filament debranching
+66,GO:0072011,0.022609179,88.0375,0.022736842,1,2,glomerular endothelium development
+67,GO:0072239,0.022609179,88.0375,0.022736842,1,2,metanephric glomerulus vasculature development
+68,GO:0090089,0.022609179,88.0375,0.022736842,1,2,regulation of dipeptide transport
+69,GO:0097070,0.022609179,88.0375,0.022736842,1,2,ductus arteriosus closure
+70,GO:1901256,0.022609179,88.0375,0.022736842,1,2,regulation of macrophage colony-stimulating factor production
+71,GO:2000878,0.022609179,88.0375,0.022736842,1,2,positive regulation of oligopeptide transport
+72,GO:2001150,0.022609179,88.0375,0.022736842,1,2,positive regulation of dipeptide transmembrane transport
+73,GO:1902476,0.023308278,9.360426382,0.238736842,2,21,chloride transmembrane transport
+74,GO:0061844,0.025452567,8.891139241,0.250105263,2,22,antimicrobial humoral immune response mediated by antimicrobial peptide
+75,GO:0072599,0.02756478,3.720444504,1.148210526,4,101,establishment of protein localization to endoplasmic reticulum
+76,GO:0019083,0.028279678,3.108327325,1.716631579,5,151,viral transcription
+77,GO:0006401,0.028293014,2.36459431,3.637894737,8,320,RNA catabolic process
+78,GO:0002252,0.028839956,1.896739479,8.105684211,14,713,immune effector process
+79,GO:0030888,0.029970535,8.080552359,0.272842105,2,24,regulation of B cell proliferation
+80,GO:0006720,0.030464879,4.714574899,0.682105263,3,60,isoprenoid metabolic process
+81,GO:0002643,0.033723689,44.0125,0.034105263,1,3,regulation of tolerance induction
+82,GO:0006391,0.033723689,44.0125,0.034105263,1,3,transcription initiation from mitochondrial promoter
+83,GO:0006858,0.033723689,44.0125,0.034105263,1,3,extracellular transport
+84,GO:0021871,0.033723689,44.0125,0.034105263,1,3,forebrain regionalization
+85,GO:0042045,0.033723689,44.0125,0.034105263,1,3,epithelial fluid transport
+86,GO:0042636,0.033723689,44.0125,0.034105263,1,3,negative regulation of hair cycle
+87,GO:0060290,0.033723689,44.0125,0.034105263,1,3,transdifferentiation
+88,GO:0061624,0.033723689,44.0125,0.034105263,1,3,fructose catabolic process to hydroxyacetone phosphate and glyceraldehyde-3-phosphate
+89,GO:0070327,0.033723689,44.0125,0.034105263,1,3,thyroid hormone transport
+90,GO:0071493,0.033723689,44.0125,0.034105263,1,3,cellular response to UV-B
+91,GO:0071603,0.033723689,44.0125,0.034105263,1,3,endothelial cell-cell adhesion
+92,GO:0072007,0.033723689,44.0125,0.034105263,1,3,mesangial cell differentiation
+93,GO:1902358,0.033723689,44.0125,0.034105263,1,3,sulfate transmembrane transport
+94,GO:2001301,0.033723689,44.0125,0.034105263,1,3,lipoxin biosynthetic process
+95,GO:0090150,0.04002158,2.528888889,2.523789474,6,222,establishment of protein localization to membrane
+96,GO:0000462,0.042513313,6.579465541,0.329684211,2,29,"maturation of SSU-rRNA from tricistronic rRNA transcript (SSU-rRNA, 5.8S rRNA, LSU-rRNA)"
+97,GO:0048708,0.042513313,6.579465541,0.329684211,2,29,astrocyte differentiation
+98,GO:0007271,0.044713352,29.3375,0.045473684,1,4,"synaptic transmission, cholinergic"
+99,GO:0030208,0.044713352,29.3375,0.045473684,1,4,dermatan sulfate biosynthetic process
+100,GO:0035672,0.044713352,29.3375,0.045473684,1,4,oligopeptide transmembrane transport
+101,GO:0038001,0.044713352,29.3375,0.045473684,1,4,paracrine signaling
+102,GO:0043090,0.044713352,29.3375,0.045473684,1,4,amino acid import
+103,GO:0048240,0.044713352,29.3375,0.045473684,1,4,sperm capacitation
+104,GO:0060347,0.044713352,29.3375,0.045473684,1,4,heart trabecula formation
+105,GO:0072109,0.044713352,29.3375,0.045473684,1,4,glomerular mesangium development
+106,GO:0099509,0.044713352,29.3375,0.045473684,1,4,regulation of presynaptic cytosolic calcium ion concentration
+107,GO:1900041,0.044713352,29.3375,0.045473684,1,4,negative regulation of interleukin-2 secretion
+108,GO:1901509,0.044713352,29.3375,0.045473684,1,4,regulation of endothelial tube morphogenesis
+109,GO:1990504,0.044713352,29.3375,0.045473684,1,4,dense core granule exocytosis
+110,GO:0006911,0.045220912,6.34358047,0.341052632,2,30,"phagocytosis, engulfment"
+111,GO:0050853,0.045220912,6.34358047,0.341052632,2,30,B cell receptor signaling pathway
+112,GO:0051084,0.045220912,6.34358047,0.341052632,2,30,'de novo' posttranslational protein folding
+113,GO:0034446,0.049903686,3.831868132,0.829894737,3,73,substrate adhesion-dependent cell spreading
+114,GO:0098656,0.049903686,3.831868132,0.829894737,3,73,anion transmembrane transport
