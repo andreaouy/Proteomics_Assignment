@@ -1,0 +1,151 @@
+---
+title: "R Notebook for analysis of endometrial proteomic data from CPTAC"
+output: 
+  html_notebook: 
+    fig_width: 11
+    fig_height: 8
+---
+Packages used:
+```{r}
+library("ggplot2")
+library("ggpubr")
+library("corrgram")
+library("corrplot")
+library("GGally")
+library("PoiClaClu")
+library("RColorBrewer")
+library("heatmaply")
+library("plotly")
+library("enrichplot")
+library("ggcorrplot")
+library("pheatmap")
+library("dplyr")
+```
+ 
+Read in emProt .csv generated using python cptac package and filtered gene list .txt provided
+```{r}
+emProt <- read.csv("~/Desktop/em_prot.csv")
+geneList <- as.matrix(read.table("~/Desktop/filtered_genes_list.txt", quote="\"", comment.char="")) # need to specify as.matrix, otherwise it reads in like a datatable and indexing each gene as a string is impossible
+```
+
+Sanity check: go through all the gene names in em_prot (column names) to make sure you don't have duplicate genes
+```{r}
+allGenes <- colnames(emProt)[-1] # get list of gene names using colnames. Use [-1] to cut out the first column, which is patient ID
+dupGenes <- which(duplicated(allGenes) == TRUE) 
+sum(dupGenes) # should return 0
+```
+
+Now create a new dataframe to store only data for genes listed in geneList
+```{r}
+emProtFilt <- as.data.frame(emProt$Patient_ID) # make new dataframe emProtFilt and use the first column to store patient IDs
+
+for (gene in geneList) {
+  geneLoc <- which(colnames(emProt) == gene)
+  emProtFilt <- cbind(emProtFilt, emProt[, geneLoc])
+}
+
+colnames(emProtFilt) <- c("Patient_ID", geneList)
+
+rm(gene, geneLoc) # cleanup
+```
+
+Gene normality for genes in geneList. Output: a list of normality plots as well as a table with gene, shapiro p value, and whether it is normally distributed as defined by shapiro test default (variable name geneNormality) 
+```{r}
+geneNormPath <- "~/Desktop/geneNormality/"
+geneNormality <- list()
+shapiroP <- t(c("Gene", "pVal", "Normally distributed"))
+for (ix in (1: length(geneList))) { # create a for loop that will create distribution plots of all the genes in our geneList. Using 2 as starting index beause emProtFilt[, 1] would be patient ID and we don't want that
+
+  sP <- shapiro.test(emProtFilt[, ix + 1])
+  if (sP$p.value >= 0.1) { # used 0.1 because shapiro.test function decides that this is the "approximate p-value for the test"
+    n <- "TRUE"
+  } else {
+    n <- "FALSE"
+  }
+  shapiroP <- rbind(shapiroP, t(c(geneList[ix], sP$p.value, n)))
+  
+  tmp <- ggdensity(emProtFilt[, ix + 1]) + # create distribution plot for that gene by index
+    labs(title = (paste("distribution of", geneList[ix])), x = "expression") # give plot a title and name the axes
+             
+  geneNormality[[geneList[ix]]] <- tmp # append to the normality plot list your plot, naming it by gene
+  ggsave(paste(geneNormPath, geneList[ix], ".png", sep = ""), tmp)
+    }
+colnames(shapiroP) <- shapiroP[1, ]
+shapiroP <- shapiroP[-1, ]
+shapiroP <- as.data.frame(shapiroP) # yes I know there's probably a more efficient way to write this but right now I just want to make sure it can run and not break
+geneNormality[["shapiroP"]] <- shapiroP
+write.csv(shapiroP, paste(geneNormPath, "shapiroP.csv", sep = ""))
+
+rm(tmp, ix, sP, n, shapiroP) # cleanup
+```
+
+
+Now that we know we don't have all data that are normally distributed, we know to run correlation for "non-normally distributed" data
+
+Gene correlation matrix 
+```{r}
+corMat <- cor(emProtFilt[, -1], use = "complete.obs", method = "spearman") # not sure this might be the most appropriate argument for use, but if you don't put in an argument you'll get NA values from KANK4 and POLRMT
+
+# can export this matrix to visualize with software like graphpad prism
+write.csv(corMat, "emProtFiltCorrelationMatrix.csv")
+```
+
+If you don't want to export the matrix into something like prism, you can use ggcorr function in GGally package to make correlation heatmap in R
+```{r fig.height=13, fig.width=13, fig.fullwidth=TRUE, fig.fullheight=TRUE, dpi = 72, fig.ext = "png", par(mar = c(2,2,2,2))}
+
+y<-ggcorr(emProtFilt[, -1], 
+          method = c("complete.obs", "spearman"), 
+          digits = 0, # number of digits to show in breaks of correlation coeffs 
+          low = "blue", 
+          high = "red", 
+          label = FALSE, 
+          label_size = 5, 
+          hjust = 1, 
+          size = 5, 
+          color = "black", 
+          color = "black", 
+          layout.exp = 10,
+          legend.position = "bottom", 
+          legend.size = 14) +
+
+  theme(legend.spacing.x = unit(1, "cm"), legend.text.align = 0.5, legend.key.width = unit(1, "cm"))
+
+#font(face = "bold")
+
+y
+
+```
+
+
+Interactive dendrogram test
+```{r fig.height=13, fig.width=13, fig.fullwidth=TRUE, fig.fullheight=TRUE, dpi = 72, fig.ext = "png", par(mar = c(2,2,2,2))}
+colortheme <- ggplot2::scale_fill_gradient2(
+  low = "blue", high = "red",
+  midpoint = 0, limits = c(-0.8, 1)
+  )
+
+axisText <- theme(axis.text.x = element_text(color = "black"), 
+                   axis.text.y = element_text(color = "black"),
+                   axis.ticks.x = element_blank(),
+                   axis.ticks.y = element_blank(),
+                  axis.line = element_line(color = "white"))
+
+hmap <- heatmaply(as.data.frame(corMat),
+                  #margins = c(40, 30),
+                  plot_method="ggplot",
+                  scale_fill_gradient_fun = colortheme,
+                  show_dendrogram = c(TRUE, TRUE),
+                  branches_lwd = 0.2, # dendrogram branch thickness
+                  column_text_angle = 270,
+                  row_text_angle = 0,
+                  fontsize_col = 8,
+                  fontsize_row = 8,
+                  grid_gap = 0,
+                  heatmap_layers = axisText, 
+                  hide_colorbar = TRUE)
+                  #margins = c(NA, NA, NA, NA)) 
+
+hmap %>% layout(margin = list(l=130, b = 40))
+ 
+```
+
